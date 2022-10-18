@@ -63,11 +63,11 @@ SentryCrashIntegration ()
 
 - (BOOL)installWithOptions:(nonnull SentryOptions *)options
 {
-    [SentryLog logWithMessage:@"installWithOptions"];
+    [SentryLog logWithMessage:@"installWithOptions" andLevel:kSentryLevelDebug];
     if (![super installWithOptions:options]) {
         return NO;
     }
-    [SentryLog logWithMessage:@"installWithOptions1"];
+    [SentryLog logWithMessage:@"installWithOptions1" andLevel:kSentryLevelDebug];
 
     self.options = options;
 
@@ -171,7 +171,7 @@ SentryCrashIntegration ()
 
 - (void)configureScope
 {
-    [SentryLog logWithMessage:@"configureScope"];
+    [SentryLog logWithMessage:@"configureScope" andLevel:kSentryLevelDebug];
     // We need to make sure to set always the scope to KSCrash so we have it in
     // case of a crash
     [SentrySDK.currentHub configureScope:^(SentryScope *_Nonnull outerScope) {
@@ -201,7 +201,7 @@ SentryCrashIntegration ()
 
 + (void)enrichScope:(SentryScope *)scope crashWrapper:(SentryCrashWrapper *)crashWrapper
 {
-    [SentryLog logWithMessage:[NSString stringWithFormat:@"enrichScope %@", scope]];
+    [SentryLog logWithMessage:[NSString stringWithFormat:@"enrichScope %@", scope] andLevel:kSentryLevelDebug];
     // OS
     NSMutableDictionary *osData = [NSMutableDictionary new];
 
